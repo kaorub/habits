@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import HabitItem from '../HabitItem'
-import {connect} from "react-redux";
-import {addHabit, deleteHabit, warnHabit} from "../../actions";
+import { connect } from "react-redux";
+import { addHabit, deleteHabit, warnHabit } from "../../actions";
 
 class List extends Component {
 	render() {

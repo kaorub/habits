@@ -15,6 +15,7 @@ class Input extends Component {
 		return (
 			<input 
 				type="text"
+				placeholder="Введите текст"
 				value={this.state.name}
 				onChange={this.handleOnChange.bind(this)}
 				onKeyDown={this.handleSubmit.bind(this)}

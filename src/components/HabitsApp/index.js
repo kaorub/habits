@@ -1,10 +1,11 @@
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-
+import Division from '../Division';
 import Title from '../Title';
 import Input from '../Input';
 import List from '../List';
 import FriendList from '../FriendList';
+import './HabitApp.css';
 
 import { addHabit, deleteHabit, warnHabit } from '../../actions';
 
@@ -31,9 +32,11 @@ class HabitsApp extends Component {
 		return (
 			<div>
 				<Title text="О себе" />
+				<Division text="Хобби"/>
 				<Input addHabit={addHabit} habits={person.habitList} />
 				<List deleteHabit={deleteHabit} habits={person.habitList} />
 				<Title text="Друг" />
+				<Division text="Хобби"/>
 				<Input addHabit={addHabit} habits={friend.habitList}/>
 				<FriendList addHabitToPerson={addHabit} habits={friend.habitList} />
 			</div>

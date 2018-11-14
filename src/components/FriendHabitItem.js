@@ -1,38 +1,50 @@
 import React, { Component } from 'react';
-import HabitItem from './HabitItem'
 import AddIcon from './icons/AddIcon';
 import WarningIcon from './icons/WarningIcon';
 import OkIcon from './icons/OkIcon';
 import { addHabit, deleteHabit, warnHabit } from '../actions';
+import './HabitItem/HabitItem.css';
 
-export default class FriendHabitItem extends HabitItem {
-	constructor() {
-		super();
+export default class FriendHabitItem extends Component {
+	constructor(props) {
+		super(props);
+		this.state = { added: false, isHovered: false };
 	};
 
+	handleMouseEnter() {
+		this.setState({ isHovered: true });
+	}
+
+	handleMouseLeave() {
+		this.setState({ isHovered: false });
+	}
+
 	render() {
+		const { id, name } = this.props.habit;
 		return (
 				<li
-		          	key={this.props.habit.id}
-		          	className='list-item'>
+		          	key={id}
+		          	className='list-item'
+		          	onMouseEnter={this.handleMouseEnter.bind(this)}
+		          	onMouseLeave={this.handleMouseLeave.bind(this)}>
 		          	<AddIcon 
-		          		id={this.props.habit.id}
+		          		id={id}
 		          		hovered={this.state.isHovered}
-						handleClick={this.handleClick}
-		          		addHabit={addHabit} />
-	          		{this.props.habit.name}
+						onClick={this.handleClick.bind(this)}
+		          		addHabit={() => addHabit(id)} />
+	          		{name}
 	          		<WarningIcon
-						id={this.props.habit.id}
-						warnHabit={warnHabit}
-	          			/>
+						warnHabit={() => warnHabit(id)}
+          			/>
 					<OkIcon
-						className={this.state.added ? '' : 'hidden'}/>
+						added={this.state.added}
+					/>
           		</li>
 	    	
 	    )
 	}
 
 	handleClick() {
-		this.setState({added: true})
+		this.setState({ added: true })
 	}
 }

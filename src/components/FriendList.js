@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 import FriendHabitItem from './FriendHabitItem'
-import {connect} from "react-redux";
-import {addHabit, deleteHabit, warnHabit} from "../actions";
+import { addHabit, deleteHabit, warnHabit } from "../actions";
 
 class FriendList extends Component {
   render() {
     return (
-      this.props.habits.map(habit => {
-        return (<FriendHabitItem
-          key={habit.id} habit={habit}/>)
-      })
+        this.props.habits.map(habit => {
+          return (<FriendHabitItem key={habit.id} habit={habit}/>)
+        })
     )
   }
 }

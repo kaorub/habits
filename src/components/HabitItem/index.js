@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import CloseIcon from '../icons/CloseIcon';
 import WarningIcon from '../icons/WarningIcon';
 import OkIcon from '../icons/OkIcon';
+import './HabitItem.css';
 
 export default class HabitItem extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = { isHovered: false };
 	};
 

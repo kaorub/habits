@@ -1,4 +1,5 @@
-import * as types from '../constants/actionTypes';
+import * as types from "../constants/actionTypes";
+
 const initialState = {
   habitList: [
   	{
@@ -10,13 +11,12 @@ const initialState = {
   		name: 'Бег трусцой'
   	}
   ],
-};
+}
 
 export function personReducer(state = initialState, action) {
   switch (action.type) {
     case types.ADD_HABIT:
-      const newId = state.habitList[state.habitList.length-1].id + 1;
-      console.log(newId);
+      const newId = state.habitList[state.habitList.length-1] + 1;
       return {
         habitList: [
           ...state.habitList,
@@ -25,12 +25,12 @@ export function personReducer(state = initialState, action) {
             name: action.name
           }
         ]
-      };
+      }
 
     case types.DELETE_HABIT:
       return {
-        habitList: state.habitList.filter(habit => habit.id != action.id)
-      };
+          habitList: state.habitList.filter(habit => habit.id !== action.id)
+      }
 
     case types.WARN_HABIT:
       return {
@@ -40,7 +40,7 @@ export function personReducer(state = initialState, action) {
             Object.assign({}, habit, { warned: !habit.warned }) :
             habit
         })
-      };
+      }
 
     default:
       return state;

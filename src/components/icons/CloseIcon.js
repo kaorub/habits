@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import logo from './close.png';
-import './CloseIcon.css';
+import './icons.css';
 import { addHabit, deleteHabit, warnHabit } from '../../actions';
 
 class CloseIcon extends Component {
@@ -12,7 +12,7 @@ class CloseIcon extends Component {
 					src={logo}
 					alt="delete" 
 					id={this.props.id}
-					className={this.props.hovered ? '' : 'hidden'}
+					className={this.props.hovered ? 'left-icon' : 'hidden'}
 					onClick={this.handleClick.bind(this)}
 				/>
 	    	
@@ -20,7 +20,6 @@ class CloseIcon extends Component {
 	}
 
 	handleClick(e) {
-		console.log(e.target.id);
 		this.props.deleteHabit(e.target.id);
 	}
 }

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './warn.png';
 import {connect} from "react-redux";
 import {addHabit, deleteHabit, warnHabit} from "../../actions";
+import './icons.css';
 
 class WarningIcon extends Component {
 	render() {
@@ -10,14 +11,14 @@ class WarningIcon extends Component {
             src={logo}
             alt="warning"
             id={this.props.id}
+            className="right-icon"
             onClick={this.handleClick.bind(this)}
           />
 	    )
 	}
 
-	handleClick(e) {
-		console.log(e.target.name);
-		this.props.warnHabit(e.target.id);
+	handleClick() {
+		this.props.warnHabit();
 	}
 }
 
