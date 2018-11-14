@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import autobind from 'autobind-decorator'
+import {connect} from "react-redux";
+import {addHabit, deleteHabit, warnHabit} from "../../actions";
 
 class Input extends Component {
 
@@ -14,6 +15,7 @@ class Input extends Component {
 		return (
 			<input 
 				type="text"
+				value={this.state.name}
 				onChange={this.handleOnChange.bind(this)}
 				onKeyDown={this.handleSubmit.bind(this)}
 			/>
@@ -33,4 +35,11 @@ class Input extends Component {
   	}
 }
 
-export default Input;
+export default connect(state => ({
+  person: state.person,
+  friend: state.friend,
+}), dispatch => ({
+  addHabit: name => dispatch(addHabit(name)),
+  deleteHabit: id => dispatch(deleteHabit(id)),
+  warnHabit: id => dispatch(warnHabit(id)),
+}))(Input);

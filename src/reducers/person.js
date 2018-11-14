@@ -10,28 +10,27 @@ const initialState = {
   		name: 'Бег трусцой'
   	}
   ],
-}
+};
 
 export function personReducer(state = initialState, action) {
   switch (action.type) {
     case types.ADD_HABIT:
-      const newId = state.habitList[state.habitList.length-1] + 1;
+      const newId = state.habitList[state.habitList.length-1].id + 1;
+      console.log(newId);
       return {
-        habitList: {
+        habitList: [
           ...state.habitList,
-          [newId]: {
+          {
             id: newId,
             name: action.name
           }
-        }
-      }
+        ]
+      };
 
     case types.DELETE_HABIT:
-      console.log(state.habitList.filter(habit => habit.id !== action.id));
       return {
-        ...state,
-        habitList: state.habitList.filter(habit => habit.id !== action.id)
-      }
+        habitList: state.habitList.filter(habit => habit.id != action.id)
+      };
 
     case types.WARN_HABIT:
       return {
@@ -41,7 +40,7 @@ export function personReducer(state = initialState, action) {
             Object.assign({}, habit, { warned: !habit.warned }) :
             habit
         })
-      }
+      };
 
     default:
       return state;

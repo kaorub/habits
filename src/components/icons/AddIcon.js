@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import logo from './add.gif';
-import './AddIcon.css';
+import {connect} from "react-redux";
+import {addHabit, deleteHabit, warnHabit} from "../../actions";
 
-export default class AddIcon extends Component {
+class AddIcon extends Component {
 	render() {
 		return (
 				<img 
@@ -12,8 +13,6 @@ export default class AddIcon extends Component {
 					className={this.props.hovered ? '' : 'hidden'}
 					onClick={this.handleClick.bind(this)}
 				/>
-				</span>
-	    	
 	    )
 	}
 
@@ -22,3 +21,12 @@ export default class AddIcon extends Component {
 		this.props.addHabit(e.target.name);
 	}
 }
+
+export default connect(state => ({
+  person: state.person,
+  friend: state.friend,
+}), dispatch => ({
+  addHabit: name => dispatch(addHabit(name)),
+  deleteHabit: id => dispatch(deleteHabit(id)),
+  warnHabit: id => dispatch(warnHabit(id)),
+}))(AddIcon);

@@ -4,17 +4,16 @@ import { connect } from 'react-redux';
 import Title from '../Title';
 import Input from '../Input';
 import List from '../List';
+import FriendList from '../FriendList';
 
-import * as habitsActions from '../../actions';
 import { addHabit, deleteHabit, warnHabit } from '../../actions';
 
 const mapStateToProps = store => {
-	console.log(store);
 	return {
 		person: store.person,
-		friend: store.person
+		friend: store.friend
 	};
-}
+};
 
 const mapDispatchToProps = dispatch => {
   return {
@@ -22,21 +21,21 @@ const mapDispatchToProps = dispatch => {
     deleteHabit: id => dispatch(deleteHabit(id)),
     warnHabit: id => dispatch(warnHabit(id)),
   }
-}
+};
 
 class HabitsApp extends Component {
 
 	render() {
-		const { habitList, person, friend } = this.props;
+		const { person, friend } = this.props;
 
 		return (
 			<div>
 				<Title text="О себе" />
-				<Input addHabit={addHabit} />
+				<Input addHabit={addHabit} habits={person.habitList} />
 				<List deleteHabit={deleteHabit} habits={person.habitList} />
 				<Title text="Друг" />
-				<Input addHabit={addHabit} />
-				<List habits={friend.habitList} />
+				<Input addHabit={addHabit} habits={friend.habitList}/>
+				<FriendList addHabitToPerson={addHabit} habits={friend.habitList} />
 			</div>
 
     	)
