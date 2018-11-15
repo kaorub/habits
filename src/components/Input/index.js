@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
-import {addHabit, deleteHabit, warnHabit} from "../../actions";
+import { addHabit, addFriendHabit, warnHabit, deleteHabit } from '../../actions';
 
 class Input extends Component {
 
@@ -30,7 +30,11 @@ class Input extends Component {
   	handleSubmit (e) {
     	const name = e.target.value.trim();
 	    if (e.which === 13) {
-	      this.props.addHabit(name);
+	      if (this.props.isFriend) {
+	      	this.props.addFriendHabit(name);
+	      } else {
+	      	this.props.addHabit(name);
+	      }
 	      this.setState({ name: '' });
 	    }
   	}
@@ -41,6 +45,5 @@ export default connect(state => ({
   friend: state.friend,
 }), dispatch => ({
   addHabit: name => dispatch(addHabit(name)),
-  deleteHabit: id => dispatch(deleteHabit(id)),
-  warnHabit: id => dispatch(warnHabit(id)),
+  addFriendHabit: name => dispatch(addFriendHabit(name)),
 }))(Input);

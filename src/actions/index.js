@@ -7,6 +7,13 @@ export function addHabit(name) {
   };
 }
 
+export function addFriendHabit(name) {
+  return {
+    type: types.ADD_FRIEND_HABIT,
+    name
+  };
+}
+
 export function deleteHabit(id) {
   return {
     type: types.DELETE_HABIT,

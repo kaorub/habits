@@ -9,7 +9,6 @@ export default class OkIcon extends Component {
 					src={logo}
 					alt="added" 
 					className={this.props.added ? 'right-icon' : 'hidden'}
-					id={this.props.id}
 				/>
 	    )
 	}

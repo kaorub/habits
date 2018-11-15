@@ -16,7 +16,7 @@ export const initialState = {
     ]
   },
   friend: {
-    habitList: [
+    friendList: [
       {
         id: 1,
         name: "баскетбол"

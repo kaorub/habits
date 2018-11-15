@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import CloseIcon from '../icons/CloseIcon';
-import WarningIcon from '../icons/WarningIcon';
-import OkIcon from '../icons/OkIcon';
 import './HabitItem.css';
 
 export default class HabitItem extends Component {
@@ -28,7 +26,7 @@ export default class HabitItem extends Component {
 		          	<CloseIcon 
 		          		id={this.props.habit.id}
 		          		hovered={this.state.isHovered} />
-	          		{this.props.habit.name}
+	          		<span>{this.props.habit.name}</span>
           		</li>
 	    	
 	    )

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Division from '../Division';
 import Title from '../Title';
@@ -7,7 +7,7 @@ import List from '../List';
 import FriendList from '../FriendList';
 import './HabitApp.css';
 
-import { addHabit, deleteHabit, warnHabit } from '../../actions';
+import { addHabit, addFriendHabit, warnHabit, deleteHabit } from '../../actions';
 
 const mapStateToProps = store => {
 	return {
@@ -19,8 +19,9 @@ const mapStateToProps = store => {
 const mapDispatchToProps = dispatch => {
   return {
     addHabit: name => dispatch(addHabit(name)),
+    addFriendHabit: name => dispatch(addFriendHabit(name)),
     deleteHabit: id => dispatch(deleteHabit(id)),
-    warnHabit: id => dispatch(warnHabit(id)),
+    warnHabit: id => dispatch(warnHabit(id))
   }
 };
 
@@ -33,12 +34,16 @@ class HabitsApp extends Component {
 			<div>
 				<Title text="О себе" />
 				<Division text="Хобби"/>
-				<Input addHabit={addHabit} habits={person.habitList} />
-				<List deleteHabit={deleteHabit} habits={person.habitList} />
+				<Input isFriend={false} addHabit={addHabit} habits={person.habitList} />
+				<ul className="list">
+					<List deleteHabit={deleteHabit} habits={person.habitList} />
+				</ul>
 				<Title text="Друг" />
 				<Division text="Хобби"/>
-				<Input addHabit={addHabit} habits={friend.habitList}/>
-				<FriendList addHabitToPerson={addHabit} habits={friend.habitList} />
+				<Input isFriend={true} addHabit={addFriendHabit} habits={friend.friendList}/>
+				<ul className="list">
+					<FriendList addHabitToPerson={addHabit} habits={friend.friendList} />
+				</ul>
 			</div>
 
     	)

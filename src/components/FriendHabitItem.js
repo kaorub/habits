@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import AddIcon from './icons/AddIcon';
 import WarningIcon from './icons/WarningIcon';
 import OkIcon from './icons/OkIcon';
-import { addHabit, deleteHabit, warnHabit } from '../actions';
 import './HabitItem/HabitItem.css';
 
 export default class FriendHabitItem extends Component {
@@ -28,14 +27,11 @@ export default class FriendHabitItem extends Component {
 		          	onMouseEnter={this.handleMouseEnter.bind(this)}
 		          	onMouseLeave={this.handleMouseLeave.bind(this)}>
 		          	<AddIcon 
-		          		id={id}
 		          		hovered={this.state.isHovered}
 						onClick={this.handleClick.bind(this)}
-		          		addHabit={() => addHabit(id)} />
-	          		{name}
-	          		<WarningIcon
-						warnHabit={() => warnHabit(id)}
-          			/>
+						habitName={name} />
+	          		<span>{name}</span>
+	          		<WarningIcon warnId={id} />
 					<OkIcon
 						added={this.state.added}
 					/>
