@@ -11,4 +11,3 @@ export default class List extends Component {
 	    )
 	}
 }
-

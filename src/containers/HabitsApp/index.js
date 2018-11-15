@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import Division from '../Division';
-import Title from '../Title';
-import Input from '../Input';
-import List from '../List';
-import FriendList from '../FriendList';
+import Division from '../../components/Division';
+import Title from '../../components/Title';
+import Input from '../../components/Input';
+import List from '../../components/List';
+import FriendList from '../../components/FriendList';
 import './HabitApp.css';
 
 import { addHabit, addFriendHabit, warnHabit, deleteHabit } from '../../actions';

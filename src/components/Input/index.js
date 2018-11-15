@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from "react-redux";
-import { addHabit, addFriendHabit, warnHabit, deleteHabit } from '../../actions';
+import { addHabit, addFriendHabit } from '../../actions';
 
 class Input extends Component {
 
